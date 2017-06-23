@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Produto selecionado " + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
             }
         });
+    }
 
+    public void btnProdutosClick(View v){
+        Intent i = new Intent(this, ManterProdutoActivity.class);
+        startActivity(i);
     }
 }
