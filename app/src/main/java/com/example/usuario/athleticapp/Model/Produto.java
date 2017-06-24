@@ -2,25 +2,17 @@ package com.example.usuario.athleticapp.Model;
 
 public class Produto {
 
+    private int id;
     private String nome;
     private String preco;
     private int icone;
-
-    public Produto(String Nome, String Preco, int Icone){
-        this.nome = Nome;
-        this.preco = Preco;
-        this.icone = Icone;
-    }
-
-    public Produto(){
-    }
 
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        nome = nome;
+        this.nome = nome;
     }
 
     public String getPreco() {
@@ -37,5 +29,13 @@ public class Produto {
 
     public void setIcone(int icone) {
         this.icone = icone;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

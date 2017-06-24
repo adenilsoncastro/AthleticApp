@@ -22,6 +22,10 @@ public class ProdutoAdapter extends BaseAdapter {
         this.listProduto = listProduto;
     }
 
+    public void add(Produto produto){
+        listProduto.add(produto);
+    }
+
     @Override
     public int getCount() {
         return listProduto.size();

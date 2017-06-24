@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         listProduto = new ArrayList<Produto>();
 
-        listProduto.add(new Produto("bike", "100", R.drawable.bike));
-        listProduto.add(new Produto("ball", "9", R.drawable.ball));
-
         BuildSpinnerProduto(listProduto);
 
         final ProdutoAdapter produtoAdapter = new ProdutoAdapter(this, listProduto);
