@@ -23,6 +23,7 @@
         android:layout_alignRight="@+id/btnProdutos"
         android:layout_below="@+id/btnProdutos"
         android:layout_marginTop="13dp"
+        android:onClick="btnClientesClick"
         android:text="Clientes" />
 
     <Button

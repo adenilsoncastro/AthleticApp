@@ -66,4 +66,9 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, ManterProdutoActivity.class);
         startActivity(i);
     }
+
+    public void btnClientesClick(View view){
+        Intent i = new Intent(this, ManterClienteActivity.class);
+        startActivity(i);
+    }
 }
