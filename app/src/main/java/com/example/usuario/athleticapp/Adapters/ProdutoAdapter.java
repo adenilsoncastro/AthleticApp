@@ -1,4 +1,4 @@
-package com.example.usuario.athleticapp;
+package com.example.usuario.athleticapp.Adapters;
 
 import android.app.Activity;
 import android.view.View;
@@ -6,6 +6,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.usuario.athleticapp.Produto;
+import com.example.usuario.athleticapp.R;
 
 import java.util.List;
 

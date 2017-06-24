@@ -12,6 +12,9 @@ public class Produto {
         this.icone = Icone;
     }
 
+    public Produto(){
+    }
+
     public String getNome() {
         return nome;
     }

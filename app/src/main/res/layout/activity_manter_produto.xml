@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/row_layout"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
@@ -83,13 +83,37 @@
                 android:layout_weight="0.73" />
         </TableRow>
 
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnAddProduto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="btnAddProdutosClick"
+                android:text="Adicionar Produto" />
+        </TableRow>
+
         <ListView
             android:id="@+id/list"
             android:layout_width="match_parent"
-            android:layout_height="479dp"
+            android:layout_height="267dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"></ListView>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="btnVoltarClick"
+                android:text="Voltar" />
+        </TableRow>
 
     </TableLayout>
 </LinearLayout>

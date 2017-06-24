@@ -1,13 +1,18 @@
 package com.example.usuario.athleticapp;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.view.menu.ExpandedMenuView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.usuario.athleticapp.Adapters.ProdutoAdapter;
+import com.example.usuario.athleticapp.Adapters.ProdutoSpinnerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,15 +22,21 @@ public class MainActivity extends AppCompatActivity {
     private ListView list;
     private List<Produto> listProduto;
 
+    private Spinner ddlProduto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ddlProduto = (Spinner) findViewById(R.id.ddlProdutos);
+
         listProduto = new ArrayList<Produto>();
 
         listProduto.add(new Produto("bike", "100", R.drawable.bike));
         listProduto.add(new Produto("ball", "9", R.drawable.ball));
+
+        BuildSpinnerProduto(listProduto);
 
         final ProdutoAdapter produtoAdapter = new ProdutoAdapter(this, listProduto);
         list = (ListView)findViewById(R.id.list);
@@ -37,6 +48,19 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Produto selecionado " + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
             }
         });
+    }
+
+    private void BuildSpinnerProduto(List<Produto> listProduto)
+    {
+        List<String> ls = new ArrayList<String>();
+
+        for(Produto p : listProduto){
+            ls.add(p.getNome());
+        }
+        ls.add(0, "Selecione");
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, ls);
+        ddlProduto.setAdapter(adapter);
     }
 
     public void btnProdutosClick(View v){
