@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.usuario.athleticapp.Produto;
+import com.example.usuario.athleticapp.Model.Produto;
 import com.example.usuario.athleticapp.R;
 
 import java.util.List;

@@ -13,9 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.athleticapp.Adapters.ProdutoAdapter;
-import com.example.usuario.athleticapp.Adapters.ProdutoSpinnerAdapter;
+import com.example.usuario.athleticapp.Model.Produto;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 

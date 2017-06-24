@@ -1,7 +1,6 @@
 package com.example.usuario.athleticapp;
 
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.usuario.athleticapp.Adapters.ProdutoAdapter;
-import com.example.usuario.athleticapp.Adapters.ProdutoSpinnerAdapter;
+import com.example.usuario.athleticapp.Model.Produto;
 
 import java.util.ArrayList;
 import java.util.List;

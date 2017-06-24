@@ -1,4 +1,4 @@
-package com.example.usuario.athleticapp;
+package com.example.usuario.athleticapp.Model;
 
 public class Produto {
 
