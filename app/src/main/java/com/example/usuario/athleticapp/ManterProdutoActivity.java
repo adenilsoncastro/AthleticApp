@@ -1,5 +1,8 @@
 package com.example.usuario.athleticapp;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +33,7 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
     private List<Produto> listProduto;
 
     private ProdutoOperations produtoOperations;
+    private ProdutoAdapter produtoAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,26 +43,46 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
         produtoOperations = new ProdutoOperations(this);
         produtoOperations.open();
 
-        List values = produtoOperations.getAll();
-        final ProdutoAdapter produtoAdapter = new ProdutoAdapter(this, values);
-        list = (ListView)findViewById(R.id.list);
-        list.setAdapter(produtoAdapter);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Produto produtoSelecionado = listProduto.get(position);
-                Toast.makeText(ManterProdutoActivity.this, "Produto selecionado " + produtoSelecionado.getNome(), Toast.LENGTH_LONG).show();
-            }
-        });
-
         txtNomeProduto = (EditText) findViewById(R.id.txtNomeProduto);
         lblPreco = (TextView) findViewById(R.id.lblPreco);
         skPreco = (SeekBar) findViewById(R.id.skPreco);
         ddlImagem = (Spinner) findViewById(R.id.ddlImagens);
         skPreco.setOnSeekBarChangeListener(this);
 
+        BuildListView();
         BuildSpinnerImagem();
+    }
+
+    private void BuildListView(){
+        List values = produtoOperations.getAll();
+        produtoAdapter = new ProdutoAdapter(this, values);
+        list = (ListView)findViewById(R.id.list);
+        list.setAdapter(produtoAdapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Produto produtoSelecionado = (Produto)produtoAdapter.getItem(position);
+                ConfirmDelete(produtoSelecionado.getId());
+
+            }
+        });
+    }
+
+    public void ConfirmDelete(final long idProduto) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ManterProdutoActivity.this);
+        builder.setMessage("Deseja excluir o produto?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        produtoOperations.deleteById(idProduto);
+                        BuildListView();
+                    }
+                })
+                .setNegativeButton("Não", null);
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void btnAddProdutosClick(View v){

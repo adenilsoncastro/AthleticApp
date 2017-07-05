@@ -55,7 +55,11 @@ public class ProdutoOperations {
 
     public void delete(Produto produto){
         long id = produto.getId();
-        database.delete(DbWraper.PRODUTOS, DbWraper.PRODUTO_ID+ " = " + id, null);
+        database.delete(DbWraper.PRODUTOS, DbWraper.PRODUTO_ID + " = " + id, null);
+    }
+
+    public void deleteById(long id){
+        database.delete(DbWraper.PRODUTOS, DbWraper.PRODUTO_ID + " = " + id, null);
     }
 
     public List getAll() {
@@ -66,6 +70,7 @@ public class ProdutoOperations {
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
             Produto produto = new Produto();
+            produto = parseProduto(cursor);
             listProdutos.add(produto);
             cursor.moveToNext();
         }
