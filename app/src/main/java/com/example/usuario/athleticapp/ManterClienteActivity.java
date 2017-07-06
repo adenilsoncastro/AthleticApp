@@ -26,6 +26,7 @@ public class ManterClienteActivity extends AppCompatActivity {
     private EditText nome;
     private EditText cpf;
     private EditText telefone;
+    private EditText teste;
 
     private ListView list;
     private List<Cliente> clienteList;
