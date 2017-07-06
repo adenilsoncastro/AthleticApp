@@ -25,6 +25,10 @@ public class ClienteAdapter extends BaseAdapter{
         this.clienteList = clienteList;
     }
 
+    public void add(Cliente cliente){
+        clienteList.add(cliente);
+    }
+
     @Override
     public int getCount() {
         return clienteList.size();
