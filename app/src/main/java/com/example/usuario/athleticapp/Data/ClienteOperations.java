@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ClienteOperations {
     private DbWraper dbHelper;
-    private String[] CLIENT_TABLE_COLUMNS = {DbWraper.CLIENTE_ID, DbWraper.CLIENTE_NOME, DbWraper.CLIENTE_CPF, DbWraper.CLIENTE_TELEFONE};
+    private String[] CLIENT_TABLE_COLUMNS = {dbHelper.CLIENTE_ID, dbHelper.CLIENTE_NOME, dbHelper.CLIENTE_CPF, dbHelper.CLIENTE_TELEFONE};
     private SQLiteDatabase database;
 
 
@@ -86,8 +86,8 @@ public class ClienteOperations {
         Cliente cliente = new Cliente();
         cliente.setId(cursor.getInt(0));
         cliente.setNome(cursor.getString(1));
-        cliente.setCpf(cursor.getString(3));
-        cliente.setTelefone(cursor.getString(4));
+        cliente.setCpf(cursor.getString(2));
+        cliente.setTelefone(cursor.getString(3));
         return cliente;
     }
 }

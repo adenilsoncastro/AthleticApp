@@ -73,7 +73,7 @@
         android:layout_above="@+id/textViewClientes_Info"
         android:layout_alignEnd="@+id/buttonAdicionarCliente"
         android:layout_alignRight="@+id/buttonAdicionarCliente"
-        android:onClick="btnVoltarClienteClick"
+        android:onClick="voltar"
         android:text="Voltar" />
 
     <TextView

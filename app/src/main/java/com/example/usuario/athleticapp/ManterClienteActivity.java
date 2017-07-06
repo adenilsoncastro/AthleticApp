@@ -1,6 +1,8 @@
 package com.example.usuario.athleticapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.example.usuario.athleticapp.Adapters.ClienteAdapter;
 import com.example.usuario.athleticapp.Adapters.ProdutoAdapter;
 import com.example.usuario.athleticapp.Data.ClienteOperations;
 import com.example.usuario.athleticapp.Model.Cliente;
+import com.example.usuario.athleticapp.Model.ClienteProduto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,13 +46,42 @@ public class ManterClienteActivity extends AppCompatActivity {
         telefone = (EditText)findViewById(R.id.editTextTelefone_Cliente);
 
         clienteList = new ArrayList<Cliente>();
-        clienteList.add(new Cliente(1,"Adenilson","4648546","64646"));
-        clienteList.add(new Cliente(2,"Luis","4648546","64646"));
 
         final ClienteAdapter clienteAdapter = new ClienteAdapter(this, clienteList);
+
+        BuildListView();
+    }
+
+    private void BuildListView(){
+        List values = clienteOperations.getAll();
+        clienteAdapter = new ClienteAdapter(this, values);
         list = (ListView)findViewById(R.id.listClientes);
         list.setAdapter(clienteAdapter);
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Cliente clienteSelecionado = (Cliente)clienteAdapter.getItem(position);
+                ConfirmDelete(clienteSelecionado.getId());
+
+            }
+        });
+    }
+
+    public void ConfirmDelete(final long idCliente) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ManterClienteActivity.this);
+        builder.setMessage("Deseja excluir o cliente?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        clienteOperations.deleteById(idCliente);
+                        BuildListView();
+                    }
+                })
+                .setNegativeButton("Não", null);
+
+        AlertDialog alert = builder.create();
+        alert.show();
     }
 
     public void addCliente(View view)
@@ -59,7 +91,7 @@ public class ManterClienteActivity extends AppCompatActivity {
         adapter.add(cliente);
     }
 
-    public void btnVoltarClienteClick(View view)
+    public void voltar(View view)
     {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
