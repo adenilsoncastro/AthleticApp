@@ -74,6 +74,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="0.75"
+                android:onClick="btnCheckoutClick"
                 android:text="Checkout" />
         </TableRow>
 
@@ -106,6 +107,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="0.75"
+                android:onClick="btnInserirClick"
                 android:text="Inserir" />
         </TableRow>
 

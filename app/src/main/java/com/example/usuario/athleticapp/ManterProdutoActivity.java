@@ -2,6 +2,7 @@ package com.example.usuario.athleticapp;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -98,6 +99,8 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
     }
 
     public void btnVoltarClick(View v){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
         finish();
     }
 
@@ -127,6 +130,13 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
         listImagens.add("trophy");
         ArrayAdapter imgAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, listImagens);
         ddlImagem.setAdapter(imgAdapter);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Override
