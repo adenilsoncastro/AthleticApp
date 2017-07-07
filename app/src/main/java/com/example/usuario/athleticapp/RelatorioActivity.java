@@ -1,5 +1,6 @@
 package com.example.usuario.athleticapp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -79,15 +80,49 @@ public class RelatorioActivity extends AppCompatActivity {
             return;
         }
 
-        if(dataInicial != null)
-            dataInicial = dataInicial.replace("/","-");
+        if(dataInicial != null) {
+            dataInicial = dataInicial.replace("/", "-");
 
+            String[] initialDate = dataInicial.split("-");
+            if(Integer.parseInt(initialDate[0]) < 1  || Integer.parseInt(initialDate[0]) > 31 ){
+                Toast.makeText(RelatorioActivity.this, "Dia inicial inválido", Toast.LENGTH_LONG).show();
+            }
+
+            if(Integer.parseInt(initialDate[1]) < 1 || Integer.parseInt(initialDate[0]) > 12 ){
+                Toast.makeText(RelatorioActivity.this, "Mês inicial inválido", Toast.LENGTH_LONG).show();
+            }
+
+            if(Integer.parseInt(initialDate[2]) < 1950 || Integer.parseInt(initialDate[0]) > 9999 ){
+                Toast.makeText(RelatorioActivity.this, "Ano inicial inválido", Toast.LENGTH_LONG).show();
+            }
+
+        }
         if(dataFinal != null){
             dataFinal = dataFinal.replace("/","-");
+
+            String[] finalDate = dataInicial.split("-");
+            if(Integer.parseInt(finalDate[0]) < 1  || Integer.parseInt(finalDate[0]) > 31 ){
+                Toast.makeText(RelatorioActivity.this, "Dia final inválido", Toast.LENGTH_LONG).show();
+            }
+
+            if(Integer.parseInt(finalDate[1]) < 1 || Integer.parseInt(finalDate[0]) > 12 ){
+                Toast.makeText(RelatorioActivity.this, "Mês final inválido", Toast.LENGTH_LONG).show();
+            }
+
+            if(Integer.parseInt(finalDate[2]) < 1950 || Integer.parseInt(finalDate[0]) > 9999 ){
+                Toast.makeText(RelatorioActivity.this, "Ano final inválido", Toast.LENGTH_LONG).show();
+            }
         }
 
         List<Checkout> listFiltrada = checkoutOperations.Filtrar(dataInicial, dataFinal);
 
         BuildListView(listFiltrada);
+    }
+
+    public void voltar(View view)
+    {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }

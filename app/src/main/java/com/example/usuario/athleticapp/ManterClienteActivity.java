@@ -98,6 +98,12 @@ public class ManterClienteActivity extends AppCompatActivity {
                     Cliente cliente = clienteOperations.addCliente(nome.getText().toString(),cpf.getText().toString(), telefone.getText().toString());
                     ClienteAdapter adapter = (ClienteAdapter)list.getAdapter();
                     adapter.add(cliente);
+
+                    nome.setText("");
+                    cpf.setText("");
+                    telefone.setText("");
+
+                    BuildListView();
                 }
                 else
                 {

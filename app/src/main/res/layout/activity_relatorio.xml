@@ -15,7 +15,8 @@
         android:layout_below="@+id/btnRelatorios"
         android:stretchColumns="1"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        android:id="@+id/tableLayout2">
 
     <TableRow
         android:layout_width="368dp"
@@ -99,11 +100,22 @@
                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
         </TableRow>
 
-        <ListView
-            android:id="@+id/listRelatorio"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
     </TableLayout>
+
+    <ListView
+        android:id="@+id/listRelatorio"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/tableLayout2"></ListView>
+
+    <Button
+        android:id="@+id/buttonVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="voltar"
+        android:text="Voltar"
+        android:layout_below="@+id/listRelatorio"
+        android:layout_alignRight="@+id/tableLayout2"
+        android:layout_alignEnd="@+id/tableLayout2" />
 
 </RelativeLayout>
