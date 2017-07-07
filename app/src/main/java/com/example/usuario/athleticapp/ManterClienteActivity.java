@@ -110,7 +110,13 @@ public class ManterClienteActivity extends AppCompatActivity {
         {
             Toast.makeText(ManterClienteActivity.this, "Informe um nome", Toast.LENGTH_LONG).show();
         }
+    }
 
+    @Override
+    public void onBackPressed(){
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     public void voltar(View view)
