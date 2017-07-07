@@ -63,7 +63,9 @@ public class RelatorioAdapter extends BaseAdapter {
 
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
 
-        lblData.setText(formato.format(checkout.getData()));
+        if(checkout.getData() != null){
+            lblData.setText(formato.format(checkout.getData()));
+        }
 
         return view;
     }

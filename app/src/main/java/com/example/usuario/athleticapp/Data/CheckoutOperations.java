@@ -9,7 +9,10 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.usuario.athleticapp.Model.Checkout;
 import com.example.usuario.athleticapp.Model.Cliente;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +40,21 @@ public class CheckoutOperations {
         ContentValues values = new ContentValues();
         values.put(DbWraper.CHECKOUT_NOME, checkout.getNomeCliente());
         values.put(DbWraper.CHECKOUT_PRECO, checkout.getValor());
-        values.put(DbWraper.CHECKOUT_DATA, checkout.getData().toString());
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date = null;
+        String dateToFormat = checkout.getData().toString();
+
+        try {
+            date = format.parse(dateToFormat);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+
+        values.put(DbWraper.CHECKOUT_DATA, timeStamp);
 
         long checkoutId = database.insert(DbWraper.CHECKOUTS, null, values);
 
@@ -80,7 +97,20 @@ public class CheckoutOperations {
         checkout.setId(cursor.getInt(0));
         checkout.setNomeCliente(cursor.getString(1));
         checkout.setValor(cursor.getDouble(2));
-        checkout.setData(new Date(cursor.getLong(3)*1000));
+
+        String data = cursor.getString(3);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date d = null;
+        try {
+            d = dateFormat.parse(data);
+        } catch (ParseException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        checkout.setData(d);
+        //checkout.setData(new Date(cursor.getLong(3)*1000));
         return checkout;
     }
 }

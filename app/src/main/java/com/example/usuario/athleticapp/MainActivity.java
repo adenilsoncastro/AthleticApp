@@ -158,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
     public void btnClientesClick(View view){
         Intent i = new Intent(this, ManterClienteActivity.class);
         startActivity(i);
+        finish();
     }
 
     public void btnRelatorioClick(View v){
