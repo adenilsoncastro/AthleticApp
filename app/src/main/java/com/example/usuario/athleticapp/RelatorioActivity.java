@@ -61,6 +61,24 @@ public class RelatorioActivity extends AppCompatActivity {
             return;
         }
 
+        if(dataInicial.length() < 10 || dataFinal.length() < 10 ){
+            Toast.makeText(RelatorioActivity.this, "Data informada inválida", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(dataInicial.length() > 10 || dataFinal.length() > 10 ){
+            Toast.makeText(RelatorioActivity.this, "Data informada inválida", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        int countInicial = dataInicial.length() - dataInicial.replace("/", "").length();
+        int countFinal = dataFinal.length() - dataInicial.replace("/", "").length();
+
+        if(countInicial < 2 || countFinal < 2){
+            Toast.makeText(RelatorioActivity.this, "Data em formato inválido", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if(dataInicial != null)
             dataInicial = dataInicial.replace("/","-");
 
