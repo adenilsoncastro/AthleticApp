@@ -7,10 +7,12 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.usuario.athleticapp.Model.Checkout;
 import com.example.usuario.athleticapp.Model.ClienteProduto;
 import com.example.usuario.athleticapp.Model.Produto;
 import com.example.usuario.athleticapp.R;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -20,25 +22,25 @@ import java.util.List;
 public class RelatorioAdapter extends BaseAdapter {
 
     private final Activity activity;
-    private List<ClienteProduto> listClienteProduto;
+    private List<Checkout> listCheckout;
 
-    public RelatorioAdapter(Activity activity, List<ClienteProduto> listProduto){
+    public RelatorioAdapter(Activity activity, List<Checkout> listCheckout){
         this.activity = activity;
-        this.listClienteProduto = listProduto;
+        this.listCheckout = listCheckout;
     }
 
-    public void add(ClienteProduto clienteProduto){
-        listClienteProduto.add(clienteProduto);
+    public void add(Checkout checkout){
+        listCheckout.add(checkout);
     }
 
     @Override
     public int getCount() {
-        return listClienteProduto.size();
+        return listCheckout.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return listClienteProduto.get(position);
+        return listCheckout.get(position);
     }
 
     @Override
@@ -49,13 +51,19 @@ public class RelatorioAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        View view = activity.getLayoutInflater().inflate(R.layout.list_produto, parent, false);
-        ClienteProduto clienteProduto = listClienteProduto.get(position);
+        View view = activity.getLayoutInflater().inflate(R.layout.list_relatorio, parent, false);
+        Checkout checkout= listCheckout.get(position);
 
-        TextView lblNome = (TextView) view.findViewById(R.id.lblNome);
-        TextView lblPreco = (TextView) view.findViewById(R.id.lblPreco);
+        TextView lblNome = (TextView) view.findViewById(R.id.txtNomeCliente);
+        TextView lblPreco = (TextView) view.findViewById(R.id.txtPrecoTotal);
+        TextView lblData = (TextView) view.findViewById(R.id.txtData) ;
 
-        lblNome.setText(clienteProduto.getCliente().getNome());
+        lblNome.setText(checkout.getNomeCliente());
+        lblPreco.setText("R$ " + String.valueOf(checkout.getValor()));
+
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+
+        lblData.setText(formato.format(checkout.getData()));
 
         return view;
     }

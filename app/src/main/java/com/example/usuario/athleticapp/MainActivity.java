@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.usuario.athleticapp.Adapters.ProdutoAdapter;
 import com.example.usuario.athleticapp.Data.CheckoutOperations;
+import com.example.usuario.athleticapp.Data.ClienteOperations;
 import com.example.usuario.athleticapp.Data.ProdutoOperations;
 import com.example.usuario.athleticapp.Model.Checkout;
 import com.example.usuario.athleticapp.Model.Cliente;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Produto> listProduto;
     private List<Cliente> listCliente;
     private ProdutoOperations produtoOperations;
+    private ClienteOperations clienteOperations;
     private CheckoutOperations checkoutOperations;
 
     private Spinner ddlProduto;
@@ -45,25 +47,18 @@ public class MainActivity extends AppCompatActivity {
         ddlCliente = (Spinner) findViewById(R.id.ddlClientes);
 
         produtoOperations = new ProdutoOperations(this);
+        clienteOperations = new ClienteOperations(this);
         checkoutOperations = new CheckoutOperations(this);
+
         produtoOperations.open();
         checkoutOperations.open();
         listProduto = produtoOperations.getAll();
+        listCliente = clienteOperations.getAll();
         listCarrinho = new ArrayList<Produto>();
         listCliente = new ArrayList<Cliente>();
 
         BuildListView(listCarrinho);
         BuildSpinnerProduto(listProduto);
-
-        Cliente c1 = new Cliente();
-        c1.setNome("Teste1");
-        c1.setId(1);
-        listCliente.add(c1);
-        Cliente c2 = new Cliente();
-        c2.setNome("Teste2");
-        c2.setId(2);
-        listCliente.add(c2);
-
         BuildSpinnerCliente(listCliente);
 
         ddlCliente.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -161,6 +156,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnClientesClick(View view){
         Intent i = new Intent(this, ManterClienteActivity.class);
+        startActivity(i);
+    }
+
+    public void btnRelatorioClick(View v){
+        Intent i = new Intent(this, RelatorioActivity.class);
         startActivity(i);
     }
 

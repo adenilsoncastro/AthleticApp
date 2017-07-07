@@ -60,7 +60,7 @@ public class CheckoutOperations {
 
     public List getAll() {
         List listCheckouts = new ArrayList<Checkout>();
-        Cursor cursor = database.query(DbWraper.CLIENTES,
+        Cursor cursor = database.query(DbWraper.CHECKOUTS,
                 CHECKOUT_TABLE_COLUMNS, null, null, null, null, null);
 
         cursor.moveToFirst();
