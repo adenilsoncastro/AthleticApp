@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         listProduto = produtoOperations.getAll();
         listCliente = clienteOperations.getAll();
         listCarrinho = new ArrayList<Produto>();
-        listCliente = new ArrayList<Cliente>();
 
         BuildListView(listCarrinho);
         BuildSpinnerProduto(listProduto);
