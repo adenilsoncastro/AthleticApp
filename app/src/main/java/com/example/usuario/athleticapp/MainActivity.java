@@ -51,7 +51,9 @@ public class MainActivity extends AppCompatActivity {
         checkoutOperations = new CheckoutOperations(this);
 
         produtoOperations.open();
+        clienteOperations.open();
         checkoutOperations.open();
+
         listProduto = produtoOperations.getAll();
         listCliente = clienteOperations.getAll();
         listCarrinho = new ArrayList<Produto>();
