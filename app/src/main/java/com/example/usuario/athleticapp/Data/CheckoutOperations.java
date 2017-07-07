@@ -41,18 +41,7 @@ public class CheckoutOperations {
         values.put(DbWraper.CHECKOUT_NOME, checkout.getNomeCliente());
         values.put(DbWraper.CHECKOUT_PRECO, checkout.getValor());
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-        Date date = null;
-        String dateToFormat = checkout.getData().toString();
-
-        try {
-            date = format.parse(dateToFormat);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(checkout.getData());
 
         values.put(DbWraper.CHECKOUT_DATA, timeStamp);
 
@@ -73,6 +62,29 @@ public class CheckoutOperations {
     public void delete(Cliente cliente){
         long id = cliente.getId();
         database.delete(DbWraper.CHECKOUTS, DbWraper.CHECKOUT_ID+ " = " + id, null);
+    }
+
+    public List Filtrar(String dataInicial, String dataFinal){
+        List listCheckouts = new ArrayList<Checkout>();
+
+        String dataInicialFormat = dataInicial.substring(6,10) + "-" + dataInicial.substring(3,5) + "-" + dataInicial.substring(0,2);
+        String dataFinalFormat = dataFinal.substring(6,10) + "-" + dataFinal.substring(3,5) + "-" + dataFinal.substring(0,2);
+
+        String queryString =
+                "SELECT * FROM Checkouts WHERE date(_data) >= date('" + dataInicialFormat + "') and date(_data) <= date('" + dataFinalFormat +"');";
+
+        Cursor cursor = database.rawQuery(queryString, null);
+
+        cursor.moveToFirst();
+        while(!cursor.isAfterLast()){
+            Checkout checkout = new Checkout();
+            checkout = parseCheckout(cursor);
+            listCheckouts.add(checkout);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+        return listCheckouts;
     }
 
     public List getAll() {
@@ -99,7 +111,6 @@ public class CheckoutOperations {
         checkout.setValor(cursor.getDouble(2));
 
         String data = cursor.getString(3);
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date d = null;
         try {
@@ -108,9 +119,8 @@ public class CheckoutOperations {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
         checkout.setData(d);
-        //checkout.setData(new Date(cursor.getLong(3)*1000));
+
         return checkout;
     }
 }

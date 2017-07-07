@@ -21,6 +21,8 @@ import com.example.usuario.athleticapp.Model.Cliente;
 import com.example.usuario.athleticapp.Model.ClienteProduto;
 import com.example.usuario.athleticapp.Model.Produto;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         produtoOperations.open();
         clienteOperations.open();
         checkoutOperations.open();
+
+        //Seed();
 
         listProduto = produtoOperations.getAll();
         listCliente = clienteOperations.getAll();
@@ -206,4 +210,38 @@ public class MainActivity extends AppCompatActivity {
         BuildSpinnerProduto(listProduto);
         BuildListView(listCarrinho);
     }
+
+    /*private void Seed(){
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date d1 = new Date();
+        Date d2 = new Date();
+        Date d3 = new Date();
+        try {
+            d1 = sdf.parse("21/06/2017");
+            d2 = sdf.parse("22/06/2017");
+            d3 = sdf.parse("05/07/2017");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Checkout checkout1 = new Checkout();
+        checkout1.setNomeCliente("Luis");
+        checkout1.setValor(20);
+        checkout1.setData(d1);
+
+        Checkout checkout2 = new Checkout();
+        checkout2.setNomeCliente("Adenilson");
+        checkout2.setValor(30);
+        checkout2.setData(d2);
+
+        Checkout checkout3 = new Checkout();
+        checkout3.setNomeCliente("Juca");
+        checkout3.setValor(40);
+        checkout3.setData(d3);
+
+        Checkout chkSalvo1 = checkoutOperations.addCheckout(checkout1);
+        Checkout chkSalvo2 = checkoutOperations.addCheckout(checkout2);
+        Checkout chkSalvo3 = checkoutOperations.addCheckout(checkout3);
+    }*/
 }
