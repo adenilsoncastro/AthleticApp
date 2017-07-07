@@ -87,6 +87,17 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
     }
 
     public void btnAddProdutosClick(View v){
+
+        if(txtNomeProduto.getText().toString().isEmpty()){
+            Toast.makeText(ManterProdutoActivity.this, "Informe um nome", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(skPreco.getProgress() == 0){
+            Toast.makeText(ManterProdutoActivity.this, "Informe o preco", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Produto produto = new Produto();
 
         produto.setNome(txtNomeProduto.getText().toString());
@@ -106,7 +117,7 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        lblPreco.setText(Integer.toString(progress));
+        lblPreco.setText("R$ " + Integer.toString(progress));
     }
 
     private int GetIconeFromView(){

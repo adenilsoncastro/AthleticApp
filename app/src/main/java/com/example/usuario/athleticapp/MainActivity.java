@@ -129,6 +129,11 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        if(produtoNome == "Selecione"){
+            Toast.makeText(MainActivity.this, "Selecione um produto!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         for(Produto prod : listProduto){
             if(prod.getNome().contains(produtoNome)){
                 produto = prod;
@@ -206,6 +211,10 @@ public class MainActivity extends AppCompatActivity {
     public void ResetActivity(){
         listCliente = new ArrayList<Cliente>();
         listCarrinho = new ArrayList<Produto>();
+
+        listProduto = produtoOperations.getAll();
+        listCliente = clienteOperations.getAll();
+
         BuildSpinnerCliente(listCliente);
         BuildSpinnerProduto(listProduto);
         BuildListView(listCarrinho);
