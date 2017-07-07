@@ -99,7 +99,10 @@ public class ManterClienteActivity extends AppCompatActivity {
                     ClienteAdapter adapter = (ClienteAdapter)list.getAdapter();
                     adapter.add(cliente);
                 }
-                Toast.makeText(ManterClienteActivity.this, "Informe um telefone", Toast.LENGTH_LONG).show();
+                else
+                {
+                    Toast.makeText(ManterClienteActivity.this, "Informe um telefone", Toast.LENGTH_LONG).show();
+                }
             }
             else
             {

@@ -5,46 +5,56 @@
     android:layout_height="match_parent"
     tools:context="com.example.usuario.athleticapp.MainActivity">
 
-    <Button
-        android:id="@+id/btnProdutos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
-        android:onClick="btnProdutosClick"
-        android:text="Produtos" />
+    <HorizontalScrollView
+        android:id="@+id/scrollNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnClientes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btnProdutos"
-        android:layout_alignRight="@+id/btnProdutos"
-        android:layout_below="@+id/btnProdutos"
-        android:layout_marginTop="13dp"
-        android:onClick="btnClientesClick"
-        android:text="Clientes" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-    <Button
-        android:id="@+id/btnRelatorios"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/btnProdutos"
-        android:layout_alignStart="@+id/btnProdutos"
-        android:layout_below="@+id/btnClientes"
-        android:layout_marginTop="15dp"
-        android:onClick="btnRelatorioClick"
-        android:text="Relatórios" />
+            <Button
+                android:id="@+id/btnProdutos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:onClick="btnProdutosClick"
+                android:text="Produtos" />
+
+            <Button
+                android:id="@+id/btnClientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:onClick="btnClientesClick"
+                android:text="Clientes" />
+
+            <Button
+                android:id="@+id/btnRelatorios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:onClick="btnRelatorioClick"
+                android:text="Relatórios" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btnRelatorios"
+        android:layout_below="@+id/scrollNavigation"
         android:layout_marginTop="18dp"
-        android:stretchColumns="1">
+        android:stretchColumns="1"
+        android:id="@+id/tableLayout">
 
         <TableRow
             android:layout_width="match_parent"
