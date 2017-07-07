@@ -10,31 +10,30 @@
         android:id="@+id/editTextNome_Cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Nome"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="Nome"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextCPF_Cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="CPF"
         android:layout_below="@+id/editTextNome_Cliente"
-        />
+        android:ems="10"
+        android:hint="CPF"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/editTextTelefone_Cliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextCPF_Cliente"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Telefone"
-        android:layout_below="@+id/editTextCPF_Cliente"/>
+        android:hint="Telefone"
+        android:inputType="phone" />
 
     <Button
         android:id="@+id/buttonAdicionarCliente"
@@ -61,7 +60,7 @@
     <ListView
         android:id="@+id/listClientes"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="267dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/textViewClientes"></ListView>
@@ -70,23 +69,10 @@
         android:id="@+id/buttonVoltarClientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textViewClientes_Info"
+        android:layout_below="@+id/listClientes"
         android:layout_alignEnd="@+id/buttonAdicionarCliente"
         android:layout_alignRight="@+id/buttonAdicionarCliente"
         android:onClick="voltar"
         android:text="Voltar" />
-
-    <TextView
-        android:id="@+id/textViewClientes_Info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentStart="false"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginStart="15dp"
-        android:text="Para excluir um cliente basta selecioná-lo." />
 
 </RelativeLayout>

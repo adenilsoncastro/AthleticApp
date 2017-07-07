@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ public class ManterClienteActivity extends AppCompatActivity {
     private EditText nome;
     private EditText cpf;
     private EditText telefone;
-    private EditText teste;
+    private Button btnVoltar;
 
     private ListView list;
     private List<Cliente> clienteList;
@@ -45,6 +46,7 @@ public class ManterClienteActivity extends AppCompatActivity {
         nome = (EditText)findViewById(R.id.editTextNome_Cliente);
         cpf = (EditText)findViewById(R.id.editTextCPF_Cliente);
         telefone = (EditText)findViewById(R.id.editTextTelefone_Cliente);
+        btnVoltar = (Button)findViewById(R.id.buttonVoltarClientes);
 
         clienteList = new ArrayList<Cliente>();
 
@@ -87,9 +89,28 @@ public class ManterClienteActivity extends AppCompatActivity {
 
     public void addCliente(View view)
     {
-        Cliente cliente = clienteOperations.addCliente(nome.getText().toString(),cpf.getText().toString(), Integer.parseInt(telefone.getText().toString()));
-        ClienteAdapter adapter = (ClienteAdapter)list.getAdapter();
-        adapter.add(cliente);
+        if(nome.getText().toString().length() != 0)
+        {
+            if(cpf.getText().toString().length() != 0)
+            {
+                if(telefone.getText().toString().length() != 0)
+                {
+                    Cliente cliente = clienteOperations.addCliente(nome.getText().toString(),cpf.getText().toString(), Integer.parseInt(telefone.getText().toString()));
+                    ClienteAdapter adapter = (ClienteAdapter)list.getAdapter();
+                    adapter.add(cliente);
+                }
+                Toast.makeText(ManterClienteActivity.this, "Informe um telefone", Toast.LENGTH_LONG).show();
+            }
+            else
+            {
+                Toast.makeText(ManterClienteActivity.this, "Informe um CPF", Toast.LENGTH_LONG).show();
+            }
+        }
+        else
+        {
+            Toast.makeText(ManterClienteActivity.this, "Informe um nome", Toast.LENGTH_LONG).show();
+        }
+
     }
 
     public void voltar(View view)
