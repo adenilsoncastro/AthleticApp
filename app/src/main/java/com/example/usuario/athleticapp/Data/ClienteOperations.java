@@ -36,7 +36,7 @@ public class ClienteOperations {
         dbHelper.close();
     }
 
-    public Cliente addCliente(String nome, String cpf, int telefone)
+    public Cliente addCliente(String nome, String cpf, String telefone)
     {
         ContentValues values = new ContentValues();
         values.put(DbWraper.CLIENTE_NOME, nome);

@@ -95,7 +95,7 @@ public class ManterClienteActivity extends AppCompatActivity {
             {
                 if(telefone.getText().toString().length() != 0)
                 {
-                    Cliente cliente = clienteOperations.addCliente(nome.getText().toString(),cpf.getText().toString(), Integer.parseInt(telefone.getText().toString()));
+                    Cliente cliente = clienteOperations.addCliente(nome.getText().toString(),cpf.getText().toString(), telefone.getText().toString());
                     ClienteAdapter adapter = (ClienteAdapter)list.getAdapter();
                     adapter.add(cliente);
                 }

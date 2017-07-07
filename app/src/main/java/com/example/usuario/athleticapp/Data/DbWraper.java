@@ -25,7 +25,7 @@ public class DbWraper extends SQLiteOpenHelper {
     public static final String CHECKOUT_DATA = "_data";
 
     private static final String DATABASE_NAME = "AthleticApp.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String DATABASE_CREATE = "create table " + PRODUTOS
             + "(" + PRODUTO_ID + " integer primary key autoincrement, "
@@ -37,7 +37,7 @@ public class DbWraper extends SQLiteOpenHelper {
             + "(" + CLIENTE_ID + " integer primary key autoincrement, "
             + CLIENTE_NOME + " text not null, "
             + CLIENTE_CPF + " text not null, "
-            + CLIENTE_TELEFONE + " integer not null)";
+            + CLIENTE_TELEFONE + " text not null)";
 
     private static final String DATABASE_CREATE_CHECKOUT = "create table " + CHECKOUTS
             + "(" + CHECKOUT_ID + " integer primary key autoincrement, "

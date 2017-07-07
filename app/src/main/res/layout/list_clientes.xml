@@ -16,20 +16,23 @@
 
             <TextView
                 android:id="@+id/textViewNome_Cliente"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxWidth="80dp" />
 
             <TextView
                 android:id="@+id/textViewCPF_Cliente"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp" />
+                android:layout_marginRight="20dp"
+                android:maxWidth="80dp" />
 
             <TextView
                 android:id="@+id/textViewTelefone_Cliente"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:maxWidth="80dp" />
         </TableRow>
 
     </TableLayout>

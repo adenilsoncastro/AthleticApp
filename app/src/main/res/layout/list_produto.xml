@@ -15,19 +15,21 @@
             <ImageView
                 android:id="@+id/img"
                 android:layout_width="50dp"
-                android:layout_height="50dp" />
+                android:layout_height="50dp"
+                android:maxWidth="50dp" />
 
             <TextView
                 android:id="@+id/lblNome"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                />
+                android:maxWidth="80dp" />
 
             <TextView
                 android:id="@+id/lblPreco"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal"
+                android:maxWidth="80dp" />
         </TableRow>
 
     </TableLayout>
