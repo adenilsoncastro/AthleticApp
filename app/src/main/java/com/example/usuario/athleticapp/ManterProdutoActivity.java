@@ -107,6 +107,8 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
         Produto prodSalvo = produtoOperations.add(produto);
         ProdutoAdapter adapter = (ProdutoAdapter) list.getAdapter();
         adapter.add(prodSalvo);
+
+        BuildListView();
     }
 
     public void btnVoltarClick(View v){
