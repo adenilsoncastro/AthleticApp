@@ -93,6 +93,11 @@ public class ManterProdutoActivity extends AppCompatActivity implements SeekBar.
             return;
         }
 
+        if(txtNomeProduto.getText().toString().length() > 40){
+            Toast.makeText(ManterProdutoActivity.this, "Nome muito grande", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         if(skPreco.getProgress() == 0){
             Toast.makeText(ManterProdutoActivity.this, "Informe o preco", Toast.LENGTH_LONG).show();
             return;
